@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Calculator</title>
+  </head>
+  <style>
+    *::-webkit-inner-spin-button {
+      display: none;
+    }
+    .shadows {
+      box-shadow: 0px 0px 2px grey;
+    }
+  </style>
+  <body
+    class="w-full h-screen flex justify-center items-center bg-[#212121] text-white"
+  >
+    <div
+      class="w-[25%] h-[70%] bg-[#1f1f1f] rounded-xl shadow-zinc-950 flex flex-col justify-center items-center overflow-hidden shadows"
+    >
+      <div class="w-full h-[20%] flex justify-center items-end rounded-xl">
+        <input
+          disabled
+          type="number"
+          id="result"
+          autocomplete="off"
+          class="outline-none bg-transparent text-right h-full text-3xl w-[85%]"
+        />
+      </div>
+      <div class="w-full h-[80%] bg-[#2a2929] rounded-t-xl">
+        <div class="flex justify-around items-center w-full h-[20%]">
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="n1"
+              onclick="clears()"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              AC
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="%"
+              value="%"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              %
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="/"
+              value="/"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              /
+            </button>
+          </div>
+        </div>
+        <div class="flex justify-around items-center w-full h-[20%]">
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="7"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              7
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="8"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              8
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="9"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              9
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="*"
+              value="*"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              *
+            </button>
+          </div>
+        </div>
+        <div class="flex justify-around items-center w-full h-[20%]">
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="4"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              4
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="5"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              5
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="6"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              6
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="-"
+              value="-"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              -
+            </button>
+          </div>
+        </div>
+        <div class="flex justify-around items-center w-full h-[20%]">
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="1"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              1
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="2"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              2
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="3"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              3
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="+"
+              value="+"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div class="flex justify-around items-center w-full h-[20%]">
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="00"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              00
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="0"
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              0
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              id="."
+              value="."
+              onclick="getNumber(this.id)"
+              class="w-[90%] h-[95%] rounded-full bg-[#1f1f1f] shadow-lg hover:scale-[0.7] hover:bg-[#3a3030]"
+            >
+              .
+            </button>
+          </div>
+          <div
+            class="flex justify-around items-center w-[20%] h-[80%] rounded-xl text-3xl"
+          >
+            <button
+              onclick="evals()"
+              class="w-[80%] h-[85%] rounded-full bg-orange-700 hover:scale-[0.9]"
+            >
+              =
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <script>
+      function getNumber(newId) {
+        console.log(newId);
+        let result = document.getElementById("result");
+        result.value += newId;
+      }
+    </script> -->
+    <script src="script.js"></script>
+  </body>
+</html>
